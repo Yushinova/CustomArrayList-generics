@@ -6,13 +6,13 @@ import org.top.generic.CustomArrayList;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void testCustomArrayList() {
-        CustomArrayList list = new CustomArrayList();
+        CustomArrayList <String> list= new CustomArrayList<>();
         System.out.println("Добавление элемента по индексу");
         String str = "Hi";
         list.setElementByIndex(0, str);
         System.out.println(list.toString());
         System.out.println("Добавление элемента в конец");
-        Object obj = "Mom";
+        String obj = "Mom";
         list.addElement(obj);
         System.out.println(list.toString());
         System.out.println("Получение элемента по индексу 1");

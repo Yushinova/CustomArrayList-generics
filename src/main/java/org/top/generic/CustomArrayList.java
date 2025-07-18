@@ -5,21 +5,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CustomArrayList<T> {
-    public Object[] list;
+    public T[] list;
 
     public CustomArrayList() {
-        list = new Object[0];
+        list = (T[]) new Object[0];
     }
 
-    public CustomArrayList(Object[] list) {
+    public CustomArrayList(T[] list) {
         this.list = list;
     }
 
-    public void setList(Object[] list) {
+    public void setList(T[] list) {
         this.list = list;
     }
 
-    public Object[] getList() {
+    public T[] getList() {
         return list;
     }
 
@@ -27,7 +27,7 @@ public class CustomArrayList<T> {
         return list.length;
     }
 
-    public void setElementByIndex(int index, Object object) {
+    public void setElementByIndex(int index, T object) {
         if (index > list.length || index < 0) {
             throw new IndexOutOfBoundsException("Индекс: " + index + ", Размер: " + list.length);
         }
@@ -40,7 +40,7 @@ public class CustomArrayList<T> {
 
         // Копируем оставшиеся элементы
         System.arraycopy(list, index, newList, index + 1, list.length - index);
-        list = newList;
+        list = (T[]) newList;
     }
 
     public Object getElementByIndex(int index) {
@@ -50,13 +50,10 @@ public class CustomArrayList<T> {
         return list[index];
     }
 
-    public void addElement(Object object) {
-        if (list.length > 0 && list[0].getClass() != object.getClass()) {
-            throw new ClassCastException("CustomArrayList class: " + list[0].getClass());
-        }
+    public void addElement(T object) {
         Object[] newList = Arrays.copyOf(list, list.length + 1);
         newList[list.length] = object;
-        list = newList;
+        list = (T[]) newList;
     }
 
     public void deleteElementByIndex(int index) {
@@ -70,7 +67,7 @@ public class CustomArrayList<T> {
 
         // Копируем элементы после индекса
         System.arraycopy(list, index + 1, newList, index, list.length - index - 1);
-        list = newList;
+        list = (T[]) newList;
     }
 
     public void deleteEnd() {
